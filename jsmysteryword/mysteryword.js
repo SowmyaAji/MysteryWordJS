@@ -12,7 +12,6 @@ let hardWord = wordArray.filter(elem => elem.length > 8)
 let myWord = (words) => {
     let sWord = words[Math.floor(Math.random() * words.length)];
     let secWord = sWord.toUpperCase();
-    console.log(secWord)
     let length = secWord.length;
     let underlines = []
     for (let letter of secWord) {
