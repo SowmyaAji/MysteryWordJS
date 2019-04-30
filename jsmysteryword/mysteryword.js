@@ -1,6 +1,8 @@
 $("#hide").hide();
 $("#guess").hide();
 
+
+
 let wordArray = ["Able", "Absence", "Alloy", "Affiliate", "Afford", "Absolute", "Assinine", "Accommodate", "Agile", "Apply", "Ant", "As", "Antagonize", "Accrue", "Accordion", "According"]
 
 let easyWord = wordArray.filter(elem => elem.length < 6)
@@ -10,7 +12,6 @@ let hardWord = wordArray.filter(elem => elem.length > 8)
 let myWord = (words) => {
     let sWord = words[Math.floor(Math.random() * words.length)];
     let secWord = sWord.toUpperCase();
-    console.log(secWord)
     let length = secWord.length;
     let underlines = []
     for (let letter of secWord) {
@@ -29,20 +30,18 @@ let myWord = (words) => {
         )
     $("#guess").show()
     let guesses = 8;
-    // let guessCounter = 0;
     let guessedLetters = []
 
     $("#go").on('click', function () {
         let letter = $("#letter").val().toUpperCase();
         guessedLetters.push(letter)
-        console.log(guessedLetters)
         let displayWord = []
 
 
         for (let i = 0; i < secWord.length; i++) {
             if (guessedLetters.includes(secWord[i])) {
-                console.log(secWord[i])
                 displayWord.push(secWord[i])
+
 
             }
             else {
@@ -62,10 +61,7 @@ let myWord = (words) => {
                 guessedLetters
             )
         if (!secWord.includes(letter) && letter !== "_") {
-            // guessCounter = 1;
-
             guesses = guesses - 1;
-            // guessCounter = 0;
         }
 
         let guessnum = $("#guesses")
@@ -94,18 +90,14 @@ let myWord = (words) => {
                 )
         }
         $("#letter").val("")
+
     })
 
 }
 
 
-
-
-
 $("#e").on('click', function () {
     myWord(easyWord);
-
-
 })
 
 $("#m").on('click', function () {
@@ -115,6 +107,7 @@ $("#m").on('click', function () {
 $("#d").on('click', function () {
     myWord(hardWord);
 })
+
 function playAgain() {
     $(document).on("click", "#repeat", function () {
         location.reload(true);
